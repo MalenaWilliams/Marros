@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
-import {consultarBDD} from "../../assets/funciones.js"
+import { consultarBDD } from "../../assets/funciones.js"
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
-    const {category} = useParams
+    const { category } = useParams()
     useEffect(() => {
 
-if(category) {
-    consultarBDD('./json/products.json').then(product => {
-        const productList= product.filter(prod => prod.stock > 0).filter(prod => prod.idCategoria === parseInt(category))
-        const cardProduct = ItemList({productList})
-        setProducts(cardProduct)
-    })
-} else {
-    consultarBDD('./json/products.json').then(product => {
-        const productList= product.filter(prod => prod.stock > 0)
-        const cardProduct = ItemList({productList})
-        setProducts(cardProduct)
-    })
-}         
+        if (category) {
+            consultarBDD('../json/products.json').then(product => {
+                const productList = product.filter(prod => prod.stock > 0).filter(prod => prod.idCategoria === parseInt(category))
+                const cardProduct = ItemList({ productList })
+                setProducts(cardProduct)
+            })
+        } else {
+            consultarBDD('./json/products.json').then(product => {
+                const productList = product.filter(prod => prod.stock > 0)
+                const cardProduct = ItemList({ productList })
+                setProducts(cardProduct)
+            })
+        }
     }, [category]);
 
     return (
