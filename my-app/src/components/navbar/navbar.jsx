@@ -1,5 +1,5 @@
-import Categorias from "./categorias/categorias";
-import CartWidget from "../cartWidget/cartWidget";
+import Categorias from "./Categorias/Categorias";
+import CartWidget from "../CartWidget/CartWidget";
 const Navbar = () => {
     return ( 
       <nav className="navbar">

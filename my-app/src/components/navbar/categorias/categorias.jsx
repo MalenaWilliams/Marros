@@ -4,17 +4,17 @@ function Categorias() {
         <>
           <li className="navbar__item">
             <button className="navbar__link" >
-              Home
+              Living
             </button>
           </li>
           <li className="navbar__item">
             <button className="navbar__link" >
-              Diseños
+              Dormitorio
             </button>
           </li>
           <li className="navbar__item">
             <button className="navbar__link" >
-              Productos
+              Cocina
             </button>
           </li>
         </>
