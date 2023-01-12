@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { consultarBDD } from "../../assets/funciones.js"
+import { cargarBDD } from "../../assets/firebase";
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
@@ -21,6 +22,7 @@ const ItemListContainer = () => {
                 setProducts(cardProduct)
             })
         }
+        //cargarBDD().then(products => console.log(products))//
     }, [category]);
 
     return (
