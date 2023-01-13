@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 
 const Checkout = () => {
-    const initialValues = { nombreCompleto: "", email: "", validateEmail: "", DNI: "", celular: "", direccion: "" }
+    const initialValues = { nombreCompleto: "", email: "", validateEmail: "", dni: "", celular: "", direccion: "" }
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -17,18 +17,15 @@ const Checkout = () => {
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            consultarFormulario();
         }
     }, [formErrors]);
 
 
     const handleSubmit = (e) => {
-
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
         e.target.reset()
-        consultarFormulario()
     };
 
     const handleChange = (e) => {
@@ -71,8 +68,8 @@ const Checkout = () => {
         return errors;
     };
 
+
     const consultarFormulario = async (e) => {
-        e.preventDefault()
         const datosForm = new FormData(formulario.current)
         const cliente = Object.fromEntries(datosForm)
 
@@ -121,7 +118,6 @@ const Checkout = () => {
                 const ordenCompra = await getOrdenCompra(createResult.id);
                 toast.success(`¡Gracias por su compra! Su orden de compra es: ${ordenCompra.id}`)
                 emptyCart()
-                e.target.reset()
                 navigate("/")
             } catch (err) {
                 console.error(err);
@@ -153,7 +149,7 @@ const Checkout = () => {
                 </div>
                 <div className="form__div">
                     <label htmlFor="dni" className="form__label">DNI</label>
-                    <input type="number" className="form__control" name="DNI" value={formValues.DNI} onChange={handleChange} />
+                    <input type="number" className="form__control" name="dni" value={formValues.dni} onChange={handleChange} />
                     <p className='colorMensajeCheckout'>{formErrors.DNI}</p>
                 </div>
                 <div className="form__div">
