@@ -18,7 +18,7 @@ const ItemDetail = ({ item }) => {
                 <h5 className="cardDetail__title">{item.nombre}</h5>
                 <p className="cardDetail__text">Medidas: {item.medidas} </p>
                 <p className="cardDetail__text">Material: {item.material} </p>
-                <p className="cardDetail__text">Precio: $ {new Intl.NumberFormat('de-DE').format(item.precio)} </p>
+                <p className="cardDetail__text">Precio: $ {item.precio} </p>
                 <p className="cardDetail__text">Stock: {item.stock} </p>
                 <ItemCount inicial={1} stock={item.stock} onAdd={onAdd} />
                 <button className="card__button"><Link to={`/`}>Volver</Link></button>

@@ -1,8 +1,11 @@
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { DrakModeProvider } from '../context/DarkModeContext';
+
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from "./Navbar/Navbar";
 import ItemListContainer from './ItemListContainer/ItemListContainer';
@@ -25,6 +28,7 @@ const App = () => {
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
             </Routes>
+            <ToastContainer />
           </DrakModeProvider>
         </BrowserRouter>
       </>

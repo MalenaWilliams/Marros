@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { useDarkModeContext } from "../../context/DarkModeContext";
+
 import { useCartContext } from "../../context/CartContext";
 
 const Cart = () => {
-    const { darkMode } = useDarkModeContext()
     const { cart, emptyCart, totalPrice, removeItem } = useCartContext()
 
     return (
