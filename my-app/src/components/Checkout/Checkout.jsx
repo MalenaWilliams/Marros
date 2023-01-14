@@ -36,17 +36,17 @@ const Checkout = () => {
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        //Errores de nombre y apellido (que no los ingrese)
+
         if (!values.nombreCompleto) {
             errors.nombreCompleto = "Este campo es requerido";
         }
-        //Errores del email (que no lo ingrese, que no sea valido)
+
         if (!values.email) {
             errors.email = "Este campo es requerido";
         } else if (!regex.test(values.email)) {
             errors.email = "No es un formato valido de email";
         }
-        //Errores del email a validar (que no lo ingrese, que no sea valido, que no sea el mismo, que no sea valido podria borrarse ya que si es valido el primero solo con que sea igual ya es valido)
+
         if (!values.validateEmail) {
             errors.validateEmail = "Debe ingresar nuevamente el email";
         } else if (!regex.test(values.validateEmail)) {
@@ -54,9 +54,9 @@ const Checkout = () => {
         } else if (values.validateEmail !== values.email) {
             errors.validateEmail = "Los emails no coinciden";
         }
-        //Errores del DNI (que no lo ingrese, ya que sea un numero me aseguro dandole el tipo "number" al input)
-        if (!values.DNI) {
-            errors.DNI = "Este campo es requerido";
+
+        if (!values.dni) {
+            errors.dni = "Este campo es requerido";
         }
 
         if (!values.celular) {
@@ -64,6 +64,9 @@ const Checkout = () => {
         }
         if (!values.direccion) {
             errors.direccion = "Este campo es requerido";
+        }
+        if (values.direccion && values.celular && values.dni && values.validateEmail && regex.test(values.email) && values.email && values.nombreCompleto && values.validateEmail == values.email) {
+            consultarFormulario()
         }
         return errors;
     };
@@ -135,34 +138,34 @@ const Checkout = () => {
                 <div className="form__div">
                     <label htmlFor="nombre" className="form__label">Nombre y Apellido</label>
                     <input type="text" className="form__control" name="nombreCompleto" value={formValues.nombreCompleto} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.nombreCompleto}</p>
+                    <p className='mensajeCheckout'>{formErrors.nombreCompleto}</p>
                 </div>
                 <div className="form__div">
                     <label htmlFor="email" className="form__label">Email</label>
                     <input type="text" className="form__control" name="email" value={formValues.email} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.email}</p>
+                    <p className='mensajeCheckout'>{formErrors.email}</p>
                 </div>
                 <div className="form__div">
                     <label htmlFor="email2" className="form__label">Repetir Email</label>
                     <input type="text" className="form__control" name="validateEmail" value={formValues.validateEmail} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.validateEmail}</p>
+                    <p className='mensajeCheckout'>{formErrors.validateEmail}</p>
                 </div>
                 <div className="form__div">
                     <label htmlFor="dni" className="form__label">DNI</label>
                     <input type="number" className="form__control" name="dni" value={formValues.dni} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.DNI}</p>
+                    <p className='mensajeCheckout'>{formErrors.dni}</p>
                 </div>
                 <div className="form__div">
                     <label htmlFor="celular" className="form__label">Celular</label>
                     <input type="number" className="form__control" name="celular" value={formValues.celular} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.celular}</p>
+                    <p className='mensajeCheckout'>{formErrors.celular}</p>
                 </div>
                 <div className="form__div">
                     <label htmlFor="direccion" className="form__label">Dirección</label>
                     <input type="text" className="form__control" name="direccion" value={formValues.direccion} onChange={handleChange} />
-                    <p className='colorMensajeCheckout'>{formErrors.direccion}</p>
+                    <p className='mensajeCheckout'>{formErrors.direccion}</p>
                 </div>
-                <button type="submit" className="btn btn-primary">Finalizar Compra</button>
+                <button type="submit" className="form__button">Finalizar Compra</button>
             </form>
         </div>
 

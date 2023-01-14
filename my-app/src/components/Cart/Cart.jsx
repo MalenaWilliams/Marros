@@ -10,7 +10,7 @@ const Cart = () => {
             {cart.length === 0 ?
                 <>
                     <h1>Su carrito esta vacio</h1>
-                    <button className="btn btn-dark"><Link to={'/'}>Continuar Comprando</Link></button>
+                    <button className="form__button"><Link to={'/'}>Continuar Comprando</Link></button>
                 </>
                 :
                 <div className="container">
@@ -38,8 +38,8 @@ const Cart = () => {
                         <p>Resumen de la compra: ${new Intl.NumberFormat('de-De').format(totalPrice())}</p>
                         <div>
                             <button className="removeButton" onClick={emptyCart}>Vaciar Carrito</button>
-                            <button className="btn btn-dark"><Link to={'/'}>Continuar Comprando</Link></button>
-                            <button className="btn btn-dark"><Link to={'/checkout'}>Finalizar Compra</Link></button>
+                            <button className="form__button"><Link to={'/'}>Continuar Comprando</Link></button>
+                            <button className="form__button"><Link to={'/checkout'}>Finalizar Compra</Link></button>
                         </div>
                     </div>
 
